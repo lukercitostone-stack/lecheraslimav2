@@ -13,9 +13,18 @@ export function LoginPage() {
   const navigate = useNavigate();
 
   const goAfterLogin = async (uid: string) => {
-    // si no tiene username -> onboarding
     const snap = await getDoc(doc(db, "users", uid));
     const data = snap.data() as any;
+
+    const isAdminDoc = data?.role === "admin"; // fallback
+    // si luego usas custom claims, aquí también puedes leerlos desde AuthContext
+
+    if (isAdminDoc) {
+      navigate("/admin/create", { replace: true });
+      return;
+    }
+
+    // si no tiene username -> onboarding
     if (!data?.username) navigate("/onboarding/username", { replace: true });
     else navigate("/", { replace: true });
   };
@@ -37,7 +46,6 @@ export function LoginPage() {
     setBusy(true);
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
-      // email/password lo usaremos para admin (o usuarios si quieres)
       await goAfterLogin(cred.user.uid);
     } catch {
       alert("Credenciales inválidas.");
@@ -65,7 +73,6 @@ export function LoginPage() {
           </p>
         </div>
 
-        {/* ✅ Google */}
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -139,7 +146,10 @@ export function LoginPage() {
 
           <div className="text-sm text-center">
             <span className="text-neutral-400">¿No tienes cuenta? </span>
-            <Link to="/register" className="font-medium text-red-500 hover:text-red-400">
+            <Link
+              to="/register"
+              className="font-medium text-red-500 hover:text-red-400"
+            >
               Regístrate aquí
             </Link>
           </div>

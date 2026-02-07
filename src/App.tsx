@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { MarketplacePage } from "./pages/MarketplacePage";
 import { ListingDetailPage } from "./pages/ListingDetailPage";
-import { AdminPage } from "./pages/AdminPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { TermsPage } from "./pages/TermsPage";
@@ -12,7 +11,9 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { UsernamePage } from "./pages/UsernamePage";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { AdminRoute } from "./routes/AdminRoute";
-import { AdminCreateListingPage } from "./pages/AdminCreateListingPage";
+
+// ✅ cambia esto a tu dashboard real (tabla + modal)
+import { AdminDashboardPage } from "./pages/AdminDashboardPage";
 
 export function App() {
   return (
@@ -37,22 +38,22 @@ export function App() {
               }
             />
 
-            {/* Admin dashboard */}
+            {/* ✅ /admin solo redirige */}
             <Route
               path="/admin"
               element={
                 <AdminRoute>
-                  <AdminPage />
+                  <Navigate to="/admin/create" replace />
                 </AdminRoute>
               }
             />
 
-            {/* Admin create listing */}
+            {/* ✅ dashboard real */}
             <Route
               path="/admin/create"
               element={
                 <AdminRoute>
-                  <AdminCreateListingPage />
+                  <AdminDashboardPage />
                 </AdminRoute>
               }
             />
