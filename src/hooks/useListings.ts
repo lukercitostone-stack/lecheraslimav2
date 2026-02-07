@@ -21,13 +21,15 @@ export function useListings() {
   const [likedIds, setLikedIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
 
-  // listings realtime
   useEffect(() => {
     const q = query(collection(db, "listings"), orderBy("createdAt", "desc"));
     const unsub = onSnapshot(
       q,
       (snap) => {
-        const rows: Listing[] = snap.docs.map((d) => ({ id: d.id, ...(d.data() as any) }));
+        const rows: Listing[] = snap.docs.map((d) => ({
+          id: d.id,
+          ...(d.data() as any),
+        }));
         setListings(rows);
         setLoading(false);
       },
@@ -36,7 +38,6 @@ export function useListings() {
     return () => unsub();
   }, []);
 
-  // likes del usuario realtime
   useEffect(() => {
     if (!user) {
       setLikedIds(new Set());
@@ -52,7 +53,6 @@ export function useListings() {
   }, [user?.uid]);
 
   const marketplaceItems: MarketplaceItem[] = useMemo(() => {
-    // aquí puedes insertar ads como ya hacías
     return listings.map((l) => ({
       kind: "listing",
       listing: { ...l, liked: likedIds.has(l.id) },
@@ -75,7 +75,6 @@ export function useListings() {
 
       if (isLiked) {
         await deleteDoc(likeRef);
-        // opcional: contador
         await updateDoc(listingRef, { likesCount: increment(-1) }).catch(() => {});
       } else {
         await setDoc(likeRef, { createdAt: serverTimestamp() });
@@ -85,11 +84,5 @@ export function useListings() {
     [user, likedIds]
   );
 
-  return {
-    loading,
-    listings,
-    marketplaceItems,
-    getListing,
-    toggleLike,
-  };
+  return { loading, listings, marketplaceItems, getListing, toggleLike };
 }

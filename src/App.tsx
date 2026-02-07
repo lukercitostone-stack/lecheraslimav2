@@ -12,6 +12,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { UsernamePage } from "./pages/UsernamePage";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { AdminRoute } from "./routes/AdminRoute";
+import { AdminCreateListingPage } from "./pages/AdminCreateListingPage";
 
 export function App() {
   return (
@@ -36,11 +37,22 @@ export function App() {
               }
             />
 
+            {/* Admin dashboard */}
             <Route
               path="/admin"
               element={
                 <AdminRoute>
                   <AdminPage />
+                </AdminRoute>
+              }
+            />
+
+            {/* Admin create listing */}
+            <Route
+              path="/admin/create"
+              element={
+                <AdminRoute>
+                  <AdminCreateListingPage />
                 </AdminRoute>
               }
             />

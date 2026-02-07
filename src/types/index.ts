@@ -25,12 +25,10 @@ export type Listing = {
   contact: ListingContact;
   createdAt?: any;
 
-  // counters opcionales
   likesCount?: number;
   commentsCount?: number;
   views?: number;
 
-  // computed (cliente)
   liked?: boolean;
 };
 

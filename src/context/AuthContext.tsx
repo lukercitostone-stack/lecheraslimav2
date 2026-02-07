@@ -10,8 +10,8 @@ type UserProfile = {
   displayName: string | null;
   photoURL: string | null;
   username?: string | null;
-	suggestedUsername?: string | null;
-  role?: "user" | "admin";
+  suggestedUsername?: string | null;
+  role?: "user" | "admin"; // fallback (no seguro)
   createdAt?: any;
 };
 
@@ -42,19 +42,17 @@ async function upsertUserProfile(u: User) {
       email: u.email ?? null,
       displayName: u.displayName ?? null,
       photoURL: u.photoURL ?? null,
-      username: null, // se define en onboarding
+      username: null,
       role: "user",
       createdAt: serverTimestamp(),
-      // sugerencia: guarda un username sugerido
       suggestedUsername: autoUsername,
     });
   } else {
-    // puedes mantener datos frescos
     await updateDoc(ref, {
       email: u.email ?? null,
       displayName: u.displayName ?? null,
       photoURL: u.photoURL ?? null,
-    });
+    }).catch(() => {});
   }
 
   const after = await getDoc(ref);
@@ -69,11 +67,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshTokenClaims = async () => {
     if (!auth.currentUser) return;
-    // forzar refresh de token para obtener claims nuevos
     await auth.currentUser.getIdToken(true);
     const res = await getIdTokenResult(auth.currentUser);
-    const claimAdmin = !!res.claims.admin;
-    setIsAdmin(claimAdmin);
+    setIsAdmin(!!res.claims.admin);
   };
 
   useEffect(() => {
@@ -91,12 +87,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const p = await upsertUserProfile(u);
       setProfile(p);
 
-      // Admin recomendado: custom claim `admin:true`
       const tokenRes = await getIdTokenResult(u);
       const claimAdmin = !!tokenRes.claims.admin;
-
-      // fallback (NO recomendado para seguridad): campo en doc
-      const docAdmin = p.role === "admin";
+      const docAdmin = p.role === "admin"; // fallback
 
       setIsAdmin(claimAdmin || docAdmin);
       setLoading(false);
