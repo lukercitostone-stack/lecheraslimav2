@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { CommentsSection } from "../components/CommentsSection";
 import {
   ArrowLeft,
   MapPin,
@@ -13,10 +14,10 @@ import {
 import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa";
 import { useListings } from "../hooks/useListings";
 import { ImageGallery } from "../components/ImageGallery";
-import { Listing } from "../types";
+import { Listing } from "../types/index";
 
 function normalizePhone(phone: string) {
-  return phone.replace(/\D/g, "");
+  return (phone ?? "").replace(/\D/g, "");
 }
 
 function buildWhatsAppLink(params: { phone: string; text: string }) {
@@ -67,7 +68,10 @@ export function ListingDetailPage() {
     }
   }, [id, getListing]);
 
-  const primaryLocation = useMemo(() => listing?.locations?.[0] ?? "—", [listing]);
+  const primaryLocation = useMemo(
+    () => listing?.locations?.[0] ?? "—",
+    [listing]
+  );
 
   const handleWhatsApp = () => {
     if (!listing) return;
@@ -86,20 +90,24 @@ export function ListingDetailPage() {
       `Link: ${window.location.href}`,
     ].join("\n");
 
-    const waPhone = normalizePhone(listing.contact.whatsapp);
+    const waPhone = normalizePhone(listing.contact?.whatsapp ?? "");
+    if (!waPhone) return; // sin whatsapp, no hacemos nada
     const wa = buildWhatsAppLink({ phone: waPhone, text });
     window.open(wa, "_blank", "noopener,noreferrer");
   };
 
   const handleCall = () => {
     if (!listing) return;
-    const phone = normalizePhone(listing.contact.phone);
+    const phone = normalizePhone(listing.contact?.phone ?? "");
+    if (!phone) return;
     window.location.href = `tel:+${phone}`;
   };
 
   const handleTelegram = () => {
     if (!listing) return;
-    window.open(listing.contact.telegram, "_blank", "noopener,noreferrer");
+    const tg = listing.contact?.telegram ?? "";
+    if (!tg) return;
+    window.open(tg, "_blank", "noopener,noreferrer");
   };
 
   const handleShare = async () => {
@@ -207,7 +215,7 @@ export function ListingDetailPage() {
                 </div>
               </div>
 
-              {/* Stats */}
+              {/* ✅ Stats (sin listing.stats) */}
               <div className="w-full md:w-auto rounded-xl bg-[#1F1F1F] border border-white/5 p-4 md:min-w-[220px]">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 border rounded-lg bg-black/30 border-white/10">
@@ -216,17 +224,17 @@ export function ListingDetailPage() {
                       La vieron
                     </div>
                     <div className="mt-1 text-lg font-bold text-white">
-                      {listing.stats.views.toLocaleString()}
+                      {(listing.views ?? 0).toLocaleString()}
                     </div>
                   </div>
 
                   <div className="p-3 border rounded-lg bg-black/30 border-white/10">
                     <div className="flex items-center gap-2 text-xs text-neutral-400">
                       <MessageSquareText className="w-4 h-4" />
-                      Escribieron
+                      Comentarios
                     </div>
                     <div className="mt-1 text-lg font-bold text-white">
-                      {listing.stats.messages.toLocaleString()}
+                      {(listing.commentsCount ?? 0).toLocaleString()}
                     </div>
                   </div>
                 </div>
@@ -339,6 +347,8 @@ export function ListingDetailPage() {
                 </motion.button>
               </div>
             </div>
+
+            <CommentsSection listingId={listing.id} />
           </div>
         </div>
       </div>

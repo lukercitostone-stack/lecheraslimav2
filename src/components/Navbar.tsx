@@ -1,9 +1,16 @@
+import { Link, useNavigate } from "react-router-dom";
+import { Milk, User, LogOut, Shield } from "lucide-react";
+import { motion } from "framer-motion";
+import { signOut } from "firebase/auth";
+import { auth } from "../lib/firebase";
+import { useAuth } from "../context/AuthContext";
 
-import { Link } from 'react-router-dom';
-import { Milk, User } from 'lucide-react';
-import { motion } from 'framer-motion';
 export function Navbar() {
-  return <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/40 backdrop-blur-xl">
+  const { user, profile, isAdmin } = useAuth();
+  const nav = useNavigate();
+
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/40 backdrop-blur-xl">
       <div className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="relative flex items-center justify-center w-8 h-8 text-red-500 transition-colors rounded-lg bg-red-500/10 group-hover:bg-red-500/20">
@@ -14,21 +21,43 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Center content removed as requested */}
         <div className="flex-1" />
 
-        <div className="flex items-center gap-4">
-          <Link to="/login">
-            <motion.button whileHover={{
-            scale: 1.02
-          }} whileTap={{
-            scale: 0.98
-          }} className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-colors bg-red-600 rounded-lg shadow-lg shadow-red-500/20 hover:bg-red-500">
-              <User className="w-4 h-4" />
-              <span>Iniciar Sesión</span>
+        <div className="flex items-center gap-3">
+          {isAdmin && (
+            <Link to="/admin" className="inline-flex items-center gap-2 text-sm text-neutral-200 hover:text-white">
+              <Shield className="w-4 h-4" /> Admin
+            </Link>
+          )}
+
+          {!user ? (
+            <Link to="/login">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-colors bg-red-600 rounded-lg shadow-lg shadow-red-500/20 hover:bg-red-500"
+              >
+                <User className="w-4 h-4" />
+                <span>Iniciar Sesión</span>
+              </motion.button>
+            </Link>
+          ) : (
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={async () => {
+                await signOut(auth);
+                nav("/");
+              }}
+              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-colors rounded-lg bg-white/10 hover:bg-white/15"
+              title={profile?.username ? `@${profile.username}` : user.email ?? ""}
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Salir</span>
             </motion.button>
-          </Link>
+          )}
         </div>
       </div>
-    </nav>;
+    </nav>
+  );
 }

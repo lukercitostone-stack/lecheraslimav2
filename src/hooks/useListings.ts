@@ -1,103 +1,95 @@
-// src/hooks/useListings.ts
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  setDoc,
+  deleteDoc,
+  serverTimestamp,
+  increment,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../lib/firebase";
 import { Listing, MarketplaceItem } from "../types";
-import { BASE_LISTINGS } from "../data/listings.base";
-import { loadListingMediaLocal } from "../data/media.local";
+import { useAuth } from "../context/AuthContext";
 
 export function useListings() {
+  const { user } = useAuth();
   const [listings, setListings] = useState<Listing[]>([]);
+  const [likedIds, setLikedIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
 
+  // listings realtime
   useEffect(() => {
-    let alive = true;
-
-    (async () => {
-      setLoading(true);
-
-      // Simula “latencia” como tu timeout
-      await new Promise((r) => setTimeout(r, 900));
-
-      const withMedia: Listing[] = await Promise.all(
-        BASE_LISTINGS.map(async (l) => {
-          const media = await loadListingMediaLocal(l.id);
-
-          return {
-            ...l,
-            image: media.image,
-            images: media.images,
-            videos: media.videos ?? [],
-          };
-        })
-      );
-
-      if (alive) {
-        setListings(withMedia);
+    const q = query(collection(db, "listings"), orderBy("createdAt", "desc"));
+    const unsub = onSnapshot(
+      q,
+      (snap) => {
+        const rows: Listing[] = snap.docs.map((d) => ({ id: d.id, ...(d.data() as any) }));
+        setListings(rows);
         setLoading(false);
-      }
-    })();
-
-    return () => {
-      alive = false;
-    };
+      },
+      () => setLoading(false)
+    );
+    return () => unsub();
   }, []);
 
-  const toggleLike = (id: string) => {
-    setListings((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, liked: !item.liked } : item))
-    );
-  };
+  // likes del usuario realtime
+  useEffect(() => {
+    if (!user) {
+      setLikedIds(new Set());
+      return;
+    }
+    const likesCol = collection(db, "users", user.uid, "likes");
+    const unsub = onSnapshot(likesCol, (snap) => {
+      const s = new Set<string>();
+      snap.docs.forEach((d) => s.add(d.id));
+      setLikedIds(s);
+    });
+    return () => unsub();
+  }, [user?.uid]);
 
-  const addListing = (newListing: Omit<Listing, "id" | "liked">) => {
-    const listing: Listing = {
-      ...newListing,
-      id: Math.random().toString(36).slice(2, 11),
-      liked: false,
-    };
-    setListings((prev) => [listing, ...prev]);
-  };
-
-  const getListing = (id: string) => {
-    return (
-      listings.find((l) => l.id === id) ||
-      // fallback por si recargas y aún está loading:
-      (() => {
-        const base = BASE_LISTINGS.find((l) => l.id === id);
-        if (!base) return undefined;
-
-        // fallback “mínimo” sin esperar fetch
-        return {
-          ...base,
-          image: `/listings/${id}/cover.jpg`,
-          images: [],
-          videos: [],
-        } as Listing;
-      })()
-    );
-  };
-
-  /** ✅ Marketplace con “relleno” de ads */
-  const marketplaceItems = useMemo<MarketplaceItem[]>(() => {
-    const MIN_CARDS = 6;
-    const base: MarketplaceItem[] = listings.map((l) => ({
+  const marketplaceItems: MarketplaceItem[] = useMemo(() => {
+    // aquí puedes insertar ads como ya hacías
+    return listings.map((l) => ({
       kind: "listing",
-      listing: l,
+      listing: { ...l, liked: likedIds.has(l.id) },
     }));
+  }, [listings, likedIds]);
 
-    const missing = Math.max(0, MIN_CARDS - base.length);
-    const ads: MarketplaceItem[] = Array.from({ length: missing }, (_, i) => ({
-      kind: "ad",
-      id: `ad-${i + 1}`,
-    }));
+  const getListing = useCallback(
+    (id: string) => listings.find((x) => x.id === id),
+    [listings]
+  );
 
-    return [...base, ...ads];
-  }, [listings]);
+  const toggleLike = useCallback(
+    async (listingId: string) => {
+      if (!user) throw new Error("NOT_AUTH");
+
+      const likeRef = doc(db, "users", user.uid, "likes", listingId);
+      const listingRef = doc(db, "listings", listingId);
+
+      const isLiked = likedIds.has(listingId);
+
+      if (isLiked) {
+        await deleteDoc(likeRef);
+        // opcional: contador
+        await updateDoc(listingRef, { likesCount: increment(-1) }).catch(() => {});
+      } else {
+        await setDoc(likeRef, { createdAt: serverTimestamp() });
+        await updateDoc(listingRef, { likesCount: increment(1) }).catch(() => {});
+      }
+    },
+    [user, likedIds]
+  );
 
   return {
+    loading,
     listings,
     marketplaceItems,
-    loading,
-    toggleLike,
-    addListing,
     getListing,
+    toggleLike,
   };
 }
