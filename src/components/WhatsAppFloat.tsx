@@ -1,20 +1,31 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
+// URL actualizada con el nuevo número y mensaje personalizado
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send/?phone=51936615158&text=Hola%2C+quiero+informaci%C3%B3n+sobre+tu+web+&type=phone_number&app_absent=0";
+  "https://api.whatsapp.com/send/?phone=51936897467&text=Hola%2C+vi+tu+perfil+en+lecheraslima+y+quisiera+informaci%C3%B3n.&type=phone_number&app_absent=0";
 
+/**
+ * Formatea el número de teléfono de Perú para mostrarlo con estilo:
+ * +51 936 897 467
+ */
 function formatPhonePE(phone: string) {
   const raw = phone.replace(/\D/g, "");
+  // Si el número viene con 51 al inicio (11 dígitos en total)
   if (raw.startsWith("51") && raw.length === 11) {
     const n = raw.slice(2);
     return `+51 ${n.slice(0, 3)} ${n.slice(3, 6)} ${n.slice(6)}`;
+  }
+  // Si solo vienen los 9 dígitos del celular
+  if (raw.length === 9) {
+    return `+51 ${raw.slice(0, 3)} ${raw.slice(3, 6)} ${raw.slice(6)}`;
   }
   return phone;
 }
 
 export function WhatsAppFloat() {
-  const phoneDisplay = formatPhonePE("51936615158");
+  // Aplicamos el formato al nuevo número
+  const phoneDisplay = formatPhonePE("936897467");
 
   return (
     <a
@@ -39,7 +50,7 @@ export function WhatsAppFloat() {
       "
     >
       <div className="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-3.5 sm:py-3">
-        {/* Icono */}
+        {/* Icono de WhatsApp */}
         <div
           className="grid transition-colors duration-200 border rounded-full place-items-center w-11 h-11 sm:w-10 sm:h-10 sm:rounded-xl bg-black/30 border-white/10 group-hover:border-white/20 shrink-0"
         >
@@ -53,12 +64,11 @@ export function WhatsAppFloat() {
               group-hover:scale-[1.04]
             "
           >
-            {/* ✅ Logo real WhatsApp */}
             <FaWhatsapp className="h-5 w-5 sm:h-[18px] sm:w-[18px]" />
           </span>
         </div>
 
-        {/* Texto: SIEMPRE visible */}
+        {/* Textos */}
         <div className="flex flex-col justify-center min-w-0 pr-1 leading-tight">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-[12px] md:text-[13px] font-semibold text-white/90 tracking-wide">
@@ -85,7 +95,7 @@ export function WhatsAppFloat() {
         </div>
       </div>
 
-      {/* Glow sutil */}
+      {/* Glow Efecto */}
       <span
         aria-hidden="true"
         className="absolute inset-0 transition-opacity duration-200 opacity-0 pointer-events-none rounded-2xl group-hover:opacity-100"
