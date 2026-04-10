@@ -108,6 +108,12 @@ export function HeroSection() {
           </div>
         ) : null}
 
+        <div className="mb-4 lg:hidden">
+          <p className="text-center text-sm font-extrabold uppercase tracking-[0.18em] text-[var(--brand)]">
+            Especialistas en adultos mayores
+          </p>
+        </div>
+
         <div className="grid gap-14 pb-20 pt-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pb-28 lg:pt-10">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--brand)]/10 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--brand)] shadow-sm">
