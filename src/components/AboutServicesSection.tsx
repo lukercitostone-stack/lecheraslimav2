@@ -70,7 +70,11 @@ export function AboutServicesSection() {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                    className={`h-56 w-full transition duration-500 group-hover:scale-105 ${
+                      service.imageContain
+                        ? "bg-slate-50 p-6 object-contain"
+                        : "object-cover"
+                    }`}
                   />
                   <span className="absolute left-4 top-4 rounded-full bg-white/92 px-3 py-1 text-xs font-extrabold tracking-[0.18em] text-[var(--brand)]">
                     {String(index + 1).padStart(2, "0")}

@@ -44,6 +44,7 @@ export type Service = {
   title: string;
   description: string;
   image: string;
+  imageContain?: boolean;
 };
 
 export const services: Service[] = [
@@ -106,6 +107,7 @@ export const services: Service[] = [
     description:
       "Asistencia profesional en domicilio para procedimientos que requieren privacidad y técnica correcta.",
     image: "/medical/service-10.jpg",
+    imageContain: true,
   },
   {
     title: "Colocación de sondas",
