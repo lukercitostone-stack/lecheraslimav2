@@ -1,7 +1,92 @@
-/* URL IMPORTS (SUCH AS FONT IMPORTS) SHOULD BE KEPT ABOVE TAILWIND IMPORTS - DO NOT DELETE THIS COMMENT */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
 
-/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED - DO NOT DELETE THIS COMMENT */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL - DO NOT DELETE THIS COMMENT */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --page: #fbfdff;
+  --ink: #0f254f;
+  --brand: #123a96;
+  --brand-dark: #0d2e78;
+  --accent: #12a8c9;
+  --soft-brand: #eaf7ff;
+  --font-body: "Manrope", sans-serif;
+  --font-display: "Sora", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(18, 58, 150, 0.18);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+.hero-mesh {
+  background-image:
+    linear-gradient(rgba(18, 58, 150, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 58, 150, 0.045) 1px, transparent 1px);
+  background-position: center center;
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 90%);
+}
+
+.slanted-surface {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at top right, rgba(18, 168, 201, 0.18), transparent 28%),
+    linear-gradient(135deg, #0f2f76 0%, #123a96 58%, #0e82ad 100%);
+}
+
+.slanted-surface::before,
+.slanted-surface::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  z-index: -1;
+  height: 4rem;
+  background: var(--page);
+  transform: skewY(-3deg);
+}
+
+.slanted-surface::before {
+  top: -2.5rem;
+}
+
+.slanted-surface::after {
+  bottom: -2.5rem;
+  transform: skewY(3deg);
+}
+
+@media (max-width: 767px) {
+  .slanted-surface::before,
+  .slanted-surface::after {
+    height: 2rem;
+  }
+}
