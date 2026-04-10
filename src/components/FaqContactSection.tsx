@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, ChevronDown, ChevronUp, Clock3, MapPin, PhoneCall } from "lucide-react";
+import { ArrowRight, Building2, ChevronDown, ChevronUp, Clock3, PhoneCall } from "lucide-react";
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { buildWhatsAppUrl, faqItems, serviceOptions, siteConfig } from "../data/siteContent";
@@ -142,17 +142,12 @@ export function FaqContactSection() {
                 description="El formulario se adaptó para captación directa. Al enviarlo, la información se prepara en WhatsApp con los datos del paciente para acelerar la atención."
               />
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 {[
                   {
                     label: "Teléfono",
                     value: siteConfig.phoneInternational,
                     icon: PhoneCall,
-                  },
-                  {
-                    label: "Modalidad",
-                    value: siteConfig.location,
-                    icon: MapPin,
                   },
                   {
                     label: "Horario",
