@@ -150,7 +150,7 @@ export function FaqContactSection() {
                     icon: PhoneCall,
                   },
                   {
-                    label: "Ubicación",
+                    label: "Modalidad",
                     value: siteConfig.location,
                     icon: MapPin,
                   },

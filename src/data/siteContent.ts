@@ -5,7 +5,7 @@ export const siteConfig = {
   phoneDisplay: "926 155 440",
   phoneInternational: "+51 926 155 440",
   schedule: "Atención 24 horas, lunes a domingo",
-  location: "Guillermo Prescott 239, San Isidro",
+  location: "Centro virtual",
   whatsappMessage:
     "Hola, Enfermeras 24 Horas. He visto su página web y me gustaría recibir información personalizada sobre sus servicios de enfermería a domicilio. ¿Podrían ayudarme?",
   socialLinks: {

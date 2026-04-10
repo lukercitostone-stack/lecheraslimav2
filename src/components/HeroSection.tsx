@@ -71,6 +71,16 @@ export function HeroSection() {
           </button>
         </nav>
 
+        <div className="mb-5 lg:hidden">
+          <a
+            href={`tel:${siteConfig.phoneRaw}`}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-sky-100 bg-white px-4 py-3 text-sm font-extrabold text-[var(--ink)] shadow-sm"
+          >
+            <PhoneCall className="h-4 w-4 text-[var(--accent)]" />
+            {siteConfig.phoneDisplay}
+          </a>
+        </div>
+
         {mobileMenuOpen ? (
           <div className="mb-6 rounded-3xl border border-sky-100 bg-white/95 p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)] backdrop-blur">
             <div className="flex flex-col gap-4">
