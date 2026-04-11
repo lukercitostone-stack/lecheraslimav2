@@ -16,6 +16,7 @@ import {
   type BenefitIconKey,
 } from "../data/siteContent";
 import { buildWhatsAppUrl, testimonials } from "../data/siteContent";
+import type { PageContent } from "../data/pageContent";
 import { SectionHeading, primaryButtonClass } from "./ui";
 
 const benefitIcons: Record<BenefitIconKey, typeof Users> = {
@@ -29,15 +30,15 @@ const benefitIcons: Record<BenefitIconKey, typeof Users> = {
   education: BookOpenCheck,
 };
 
-export function BenefitsTestimonialsSection() {
+export function BenefitsTestimonialsSection({ page }: { page: PageContent }) {
   return (
     <>
       <section id="beneficios" className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Por qué elegirnos"
-            title="Razones para elegir un servicio de enfermeras a domicilio con respaldo profesional."
-            description="Cada beneficio responde a lo que más busca una familia al contratar enfermería a domicilio: seguridad, rapidez, trato humano, seguimiento y experiencia real en pacientes de distintas complejidades."
+            title={page.benefitsTitle}
+            description={page.benefitsDescription}
             centered
           />
 
@@ -72,8 +73,8 @@ export function BenefitsTestimonialsSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Prueba social"
-            title="Testimonios de familias que ya solicitaron enfermeras a domicilio en Lima."
-            description="Las reseñas ayudan a validar puntualidad, trato humano y calidad de la atención. Son una señal importante para quienes buscan enfermeras 24 horas con referencias confiables."
+            title={page.testimonialsTitle}
+            description={page.testimonialsDescription}
             centered
           />
 
@@ -123,12 +124,10 @@ export function BenefitsTestimonialsSection() {
                   Servicios realizados
                 </p>
                 <h2 className="font-display mt-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-                  Experiencia real en enfermería a domicilio en Lima Metropolitana.
+                  {page.galleryTitle}
                 </h2>
                 <p className="mt-6 max-w-xl text-base leading-8 text-sky-50/88">
-                  Nuestro trabajo incluye acompañamiento a pacientes, controles, procedimientos y
-                  cuidados continuos en casa. Esta experiencia permite responder mejor ante
-                  necesidades programadas y atención de enfermeras a toda hora.
+                  {page.galleryDescription}
                 </p>
               </div>
 
@@ -159,8 +158,8 @@ export function BenefitsTestimonialsSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Resultados"
-            title="Cifras que respaldan la experiencia del servicio de enfermería a domicilio."
-            description="Estos datos ayudan a transmitir continuidad, volumen de atención y capacidad operativa para responder a familias que buscan enfermeras por horas, turnos o atención 24 horas."
+            title={page.resultsTitle}
+            description={page.resultsDescription}
             centered
           />
 
@@ -187,7 +186,7 @@ export function BenefitsTestimonialsSection() {
                 Continuidad comercial
               </p>
               <h2 className="font-display mt-4 text-3xl font-extrabold text-[var(--ink)]">
-                Servicio de enfermeras 24 horas con contacto inmediato por llamada y WhatsApp.
+                {page.resultsCtaTitle}
               </h2>
             </div>
             <a href={buildWhatsAppUrl()} className={`${primaryButtonClass} mt-6 lg:mt-0`}>

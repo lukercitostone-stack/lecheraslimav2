@@ -1,8 +1,9 @@
 import { Cross, Facebook, Instagram, Linkedin, MapPin, PhoneCall, Stethoscope } from "lucide-react";
-import { articles, footerServices, siteConfig } from "../data/siteContent";
+import type { PageContent } from "../data/pageContent";
+import { siteConfig } from "../data/siteContent";
 import { SectionHeading, SocialPill } from "./ui";
 
-export function ArticlesFooterSection() {
+export function ArticlesFooterSection({ page }: { page: PageContent }) {
   return (
     <>
       <section
@@ -12,13 +13,13 @@ export function ArticlesFooterSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Últimos artículos"
-            title="Contenido útil para pacientes y familias que buscan enfermeras a domicilio."
-            description="Estas publicaciones ayudan a resolver dudas frecuentes sobre cuidados en casa, recuperación, enfermeras 24 horas y orientación previa antes de solicitar el servicio."
+            title={page.articlesTitle}
+            description={page.articlesDescription}
             centered
           />
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {articles.map((article) => (
+            {page.articles.map((article) => (
               <article
                 key={article.title}
                 className="overflow-hidden rounded-[2rem] border border-white bg-white shadow-[0_18px_40px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1"
@@ -39,7 +40,7 @@ export function ArticlesFooterSection() {
                   </h3>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{article.excerpt}</p>
                   <a
-                    href="#contacto"
+                    href={article.href}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[var(--brand)]"
                   >
                     Leer más
@@ -67,9 +68,7 @@ export function ArticlesFooterSection() {
             </div>
 
             <p className="mt-6 max-w-md text-sm leading-7 text-white/70">
-              Servicio de enfermeras a domicilio en Lima con atención 24 horas, procedimientos
-              de enfermería, orientación por WhatsApp y acompañamiento profesional para cada
-              familia.
+              {page.footerDescription}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -113,10 +112,12 @@ export function ArticlesFooterSection() {
               Servicios
             </p>
             <ul className="mt-5 space-y-3 text-sm font-semibold text-white/70">
-              {footerServices.map((service) => (
-                <li key={service} className="flex gap-3">
+              {page.footerServices.map((service) => (
+                <li key={service.href} className="flex gap-3">
                   <Stethoscope className="mt-1 h-4 w-4 shrink-0 text-sky-200" />
-                  <span>{service}</span>
+                  <a href={service.href} className="transition hover:text-white">
+                    {service.label}
+                  </a>
                 </li>
               ))}
             </ul>

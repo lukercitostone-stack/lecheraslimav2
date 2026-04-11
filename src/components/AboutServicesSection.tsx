@@ -3,14 +3,14 @@ import {
   buildWhatsAppUrl,
   services,
   siteConfig,
-  trustPoints,
 } from "../data/siteContent";
+import type { PageContent } from "../data/pageContent";
 import {
   SectionHeading,
   secondaryButtonClass,
 } from "./ui";
 
-export function AboutServicesSection() {
+export function AboutServicesSection({ page }: { page: PageContent }) {
   return (
     <>
       <section className="py-20 sm:py-24">
@@ -29,12 +29,12 @@ export function AboutServicesSection() {
           <div>
             <SectionHeading
               eyebrow="Presentación"
-              title="Enfermeras a domicilio con experiencia, cercanía y criterios claros de atención en casa."
-              description="En Enfermeras 24 Horas brindamos apoyo profesional para pacientes que necesitan cuidados de enfermería a domicilio en Lima. Nuestro enfoque combina rapidez de respuesta, trato humano y procedimientos realizados con orden y seguridad."
+              title={page.aboutTitle}
+              description={page.aboutDescription}
             />
 
             <div className="mt-8 grid gap-4">
-              {trustPoints.map((point) => (
+              {page.trustPoints.map((point) => (
                 <div
                   key={point}
                   className="flex gap-4 rounded-3xl border border-sky-100 bg-white p-5 shadow-[0_12px_30px_rgba(15,23,42,0.05)]"
@@ -57,8 +57,8 @@ export function AboutServicesSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Servicios destacados"
-            title="Servicios de enfermería a domicilio para adultos mayores, recuperación y procedimientos clínicos."
-            description="Atendemos necesidades frecuentes y especializadas en casa: curaciones, inyectables, control de signos vitales, sondas, retiro de puntos y cuidados postoperatorios con disponibilidad en Lima Metropolitana."
+            title={page.servicesTitle}
+            description={page.servicesDescription}
             centered
           />
 
@@ -116,12 +116,10 @@ export function AboutServicesSection() {
                 Atención rápida
               </p>
               <h2 className="font-display mt-4 text-3xl font-extrabold sm:text-4xl">
-                ¿Necesita coordinar una enfermera hoy mismo o durante la noche?
+                {page.ctaTitle}
               </h2>
               <p className="mt-4 text-base leading-8 text-sky-50/90">
-                Escríbanos y le ayudamos a identificar el servicio de enfermería a domicilio más
-                adecuado, el tiempo estimado de llegada y la modalidad de atención que mejor se
-                ajuste a su familiar.
+                {page.ctaDescription}
               </p>
             </div>
 

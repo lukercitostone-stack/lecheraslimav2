@@ -3,12 +3,12 @@ import { useState } from "react";
 import {
   buildWhatsAppUrl,
   navigationItems,
-  quickHighlights,
   siteConfig,
 } from "../data/siteContent";
+import type { PageContent } from "../data/pageContent";
 import { primaryButtonClass, secondaryButtonClass } from "./ui";
 
-export function HeroSection() {
+export function HeroSection({ page }: { page: PageContent }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -31,7 +31,7 @@ export function HeroSection() {
                 {siteConfig.name}
               </p>
               <p className="text-sm font-semibold text-slate-500">
-                Enfermería a domicilio en Lima 24 horas
+                {page.logoTagline}
               </p>
             </div>
           </a>
@@ -110,7 +110,7 @@ export function HeroSection() {
 
         <div className="mb-4 lg:hidden">
           <p className="text-center text-sm font-extrabold uppercase tracking-[0.18em] text-[var(--brand)]">
-            Enfermeras a domicilio 24 horas
+            {page.mobileTagline}
           </p>
         </div>
 
@@ -118,17 +118,15 @@ export function HeroSection() {
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--brand)]/10 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--brand)] shadow-sm">
               <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-              Enfermeras a domicilio 24/7 en Lima
+              {page.heroBadge}
             </div>
 
             <h1 className="font-display max-w-3xl text-4xl font-extrabold leading-tight text-[var(--ink)] sm:text-5xl lg:text-6xl">
-              Enfermeras a domicilio en Lima las 24 horas, con respuesta rápida y trato humano.
+              {page.heroTitle}
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-              Solicite enfermeras 24 horas para curaciones, inyectables, control de signos
-              vitales, cuidados postoperatorios y acompañamiento en casa. También brindamos
-              orientación online por WhatsApp para coordinar la atención más adecuada.
+              {page.heroDescription}
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -143,7 +141,7 @@ export function HeroSection() {
             </div>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {quickHighlights.map((highlight) => (
+              {page.quickHighlights.map((highlight) => (
                 <div
                   key={highlight}
                   className="rounded-3xl border border-white/70 bg-white/80 p-4 shadow-[0_15px_35px_rgba(15,23,42,0.06)] backdrop-blur"
@@ -159,7 +157,7 @@ export function HeroSection() {
             <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/80 p-3 shadow-[0_30px_80px_rgba(18,58,150,0.16)] backdrop-blur">
               <img
                 src="/medical/hero.jpg"
-                alt="Enfermera profesional a domicilio atendiendo paciente en Lima"
+                alt={page.heroImageAlt}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"

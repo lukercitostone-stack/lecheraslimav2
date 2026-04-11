@@ -1,7 +1,8 @@
 import { ArrowRight, Building2, ChevronDown, ChevronUp, Clock3, PhoneCall } from "lucide-react";
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
-import { buildWhatsAppUrl, faqItems, serviceOptions, siteConfig } from "../data/siteContent";
+import { buildWhatsAppUrl, serviceOptions, siteConfig } from "../data/siteContent";
+import type { PageContent } from "../data/pageContent";
 import { SectionHeading, primaryButtonClass } from "./ui";
 
 type FormState = {
@@ -24,7 +25,7 @@ const initialFormState: FormState = {
   accepted: false,
 };
 
-export function FaqContactSection() {
+export function FaqContactSection({ page }: { page: PageContent }) {
   const [activeFaq, setActiveFaq] = useState(0);
   const [formState, setFormState] = useState<FormState>(initialFormState);
   const [formNotice, setFormNotice] = useState("");
@@ -81,12 +82,12 @@ export function FaqContactSection() {
             <div>
               <SectionHeading
                 eyebrow="Preguntas frecuentes"
-                title="Respuestas claras sobre enfermeras a domicilio, horarios, cobertura y costos."
-                description="Aquí resolvemos las dudas más comunes de quienes buscan enfermeras a domicilio en Lima, enfermeras 24 horas, apoyo por turnos y orientación online antes de coordinar la visita."
+                title={page.faqTitle}
+                description={page.faqDescription}
               />
 
               <div className="mt-10 space-y-4">
-                {faqItems.map((item, index) => {
+                {page.faqItems.map((item, index) => {
                   const isOpen = activeFaq === index;
                   return (
                     <article
@@ -124,7 +125,7 @@ export function FaqContactSection() {
             <div className="rounded-[2rem] border border-white bg-white p-4 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
               <img
                 src="/medical/hero.jpg"
-                alt="Atención profesional de enfermería a domicilio en Lima"
+                alt={page.contactImageAlt}
                 loading="lazy"
                 decoding="async"
                 className="h-[520px] w-full rounded-[1.5rem] object-cover"
@@ -141,7 +142,7 @@ export function FaqContactSection() {
               <SectionHeading
                 eyebrow="Contacto"
                 title="Envíanos tu consulta sin compromiso."
-                description="Cuéntenos qué necesita el paciente y preparamos su consulta en WhatsApp para acelerar la coordinación de la enfermera a domicilio, el horario y la cobertura en Lima."
+                description={page.contactDescription}
               />
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
