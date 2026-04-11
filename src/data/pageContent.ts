@@ -120,7 +120,7 @@ export const pageContents: PageContent[] = [
   {
     path: "/",
     metaTitle:
-      "Enfermeras a domicilio en Lima | Atención 24 horas por WhatsApp",
+      "Enfermeras a domicilio en Lima | Atención 24 horas",
     metaDescription:
       "Servicio de enfermeras a domicilio en Lima 24 horas para curaciones, inyectables, cuidados postoperatorios, signos vitales y orientación por WhatsApp.",
     topic: "Enfermeras a domicilio en Lima",
@@ -134,7 +134,7 @@ export const pageContents: PageContent[] = [
     mobileTagline: "Enfermeras a domicilio 24 horas",
     heroBadge: "Enfermeras a domicilio 24/7 en Lima",
     heroTitle:
-      "Enfermeras a domicilio en Lima las 24 horas, con respuesta rápida y trato humano.",
+      "Enfermeras a domicilio en Lima con atención 24 horas, respuesta rápida y trato humano.",
     heroDescription:
       "Solicite enfermeras 24 horas para curaciones, inyectables, control de signos vitales, cuidados postoperatorios y acompañamiento en casa. También brindamos orientación online por WhatsApp para coordinar la atención más adecuada.",
     heroImageAlt:

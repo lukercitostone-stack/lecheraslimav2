@@ -58,6 +58,7 @@ export function HeroSection({ page }: { page: PageContent }) {
             </a>
             <a href={buildWhatsAppUrl()} className={primaryButtonClass}>
               Solicitar cotización
+              <span className="sr-only"> desde el encabezado principal</span>
             </a>
           </div>
 
@@ -103,6 +104,7 @@ export function HeroSection({ page }: { page: PageContent }) {
               </a>
               <a href={buildWhatsAppUrl()} className={`${primaryButtonClass} w-full`}>
                 Solicitar cotización
+                <span className="sr-only"> desde el menú móvil</span>
               </a>
             </div>
           </div>
@@ -133,6 +135,7 @@ export function HeroSection({ page }: { page: PageContent }) {
               <a href={buildWhatsAppUrl()} className={primaryButtonClass}>
                 <MessageCircle className="h-4 w-4" />
                 Contactar por WhatsApp
+                <span className="sr-only"> para coordinar enfermeras a domicilio</span>
               </a>
               <a href={`tel:${siteConfig.phoneRaw}`} className={secondaryButtonClass}>
                 <PhoneCall className="h-4 w-4" />

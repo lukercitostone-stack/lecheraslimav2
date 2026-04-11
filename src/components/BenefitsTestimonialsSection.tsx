@@ -53,9 +53,9 @@ export function BenefitsTestimonialsSection({ page }: { page: PageContent }) {
                   <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[var(--soft-brand)] text-[var(--brand)]">
                     <Icon className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-5 font-display text-2xl font-extrabold text-[var(--ink)]">
+                  <p className="mt-5 font-display text-2xl font-extrabold text-[var(--ink)]">
                     {benefit.title}
-                  </h3>
+                  </p>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
                     {benefit.description}
                   </p>
@@ -172,9 +172,9 @@ export function BenefitsTestimonialsSection({ page }: { page: PageContent }) {
                 <p className="font-display text-5xl font-extrabold text-[var(--brand)] sm:text-6xl">
                   {metric.value}
                 </p>
-                <h3 className="mt-4 text-xl font-extrabold text-[var(--ink)]">
+                <p className="mt-4 text-xl font-extrabold text-[var(--ink)]">
                   {metric.label}
-                </h3>
+                </p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{metric.supporting}</p>
               </article>
             ))}

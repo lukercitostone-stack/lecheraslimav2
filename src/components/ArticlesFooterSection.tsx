@@ -47,6 +47,7 @@ export function ArticlesFooterSection({ page }: { page: PageContent }) {
                     className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[var(--brand)]"
                   >
                     Leer más
+                    <span className="sr-only"> sobre {article.title}</span>
                   </a>
                 </div>
               </article>

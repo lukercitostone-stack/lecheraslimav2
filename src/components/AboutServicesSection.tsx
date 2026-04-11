@@ -86,9 +86,9 @@ export function AboutServicesSection({ page }: { page: PageContent }) {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-2xl font-extrabold leading-tight text-[var(--ink)]">
+                  <p className="font-display text-2xl font-extrabold leading-tight text-[var(--ink)]">
                     {service.title}
-                  </h3>
+                  </p>
                   <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
                     {service.description}
                   </p>
@@ -99,6 +99,7 @@ export function AboutServicesSection({ page }: { page: PageContent }) {
                     className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[var(--brand)]"
                   >
                     Solicitar este servicio
+                    <span className="sr-only">: {service.title}</span>
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>

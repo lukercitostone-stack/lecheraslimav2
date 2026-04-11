@@ -185,9 +185,9 @@ export function FaqContactSection({ page }: { page: PageContent }) {
                   <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-slate-400">
                     Formulario principal
                   </p>
-                  <h3 className="font-display text-2xl font-extrabold text-[var(--ink)]">
+                  <p className="font-display text-2xl font-extrabold text-[var(--ink)]">
                     Necesito enfermera a domicilio
-                  </h3>
+                  </p>
                 </div>
               </div>
 
