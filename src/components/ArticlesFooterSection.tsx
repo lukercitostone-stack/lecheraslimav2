@@ -12,8 +12,8 @@ export function ArticlesFooterSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Últimos artículos"
-            title="Un bloque editorial que completa la imagen profesional del sitio."
-            description="El objetivo no es solo mostrar publicaciones: es dar más profundidad de marca, reforzar experiencia y sostener una presentación comercial más completa."
+            title="Contenido útil para pacientes y familias que buscan enfermeras a domicilio."
+            description="Estas publicaciones ayudan a resolver dudas frecuentes sobre cuidados en casa, recuperación, enfermeras 24 horas y orientación previa antes de solicitar el servicio."
             centered
           />
 
@@ -23,7 +23,13 @@ export function ArticlesFooterSection() {
                 key={article.title}
                 className="overflow-hidden rounded-[2rem] border border-white bg-white shadow-[0_18px_40px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1"
               >
-                <img src={article.image} alt={article.title} className="h-60 w-full object-cover" />
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-60 w-full object-cover"
+                />
                 <div className="p-7">
                   <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[var(--accent)]">
                     {article.category}
@@ -61,8 +67,9 @@ export function ArticlesFooterSection() {
             </div>
 
             <p className="mt-6 max-w-md text-sm leading-7 text-white/70">
-              Rediseño comercial enfocado en confianza, claridad de servicios y captación de
-              consultas por WhatsApp.
+              Servicio de enfermeras a domicilio en Lima con atención 24 horas, procedimientos
+              de enfermería, orientación por WhatsApp y acompañamiento profesional para cada
+              familia.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

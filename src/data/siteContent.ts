@@ -1,11 +1,19 @@
 export const siteConfig = {
   name: "Enfermeras 24 Horas",
-  legalName: "Enfermeras a domicilio en Lima",
+  legalName: "Enfermeras 24 Horas en Lima",
+  alternateNames: [
+    "Enfermeras a Toda Hora",
+    "Enfermeras a domicilio en Lima",
+    "Enfermeras 24 horas Lima",
+  ],
   phoneRaw: "51926155440",
   phoneDisplay: "926 155 440",
   phoneInternational: "+51 926 155 440",
   schedule: "Atención 24 horas, lunes a domingo",
-  location: "Centro virtual",
+  location: "Lima Metropolitana, Perú",
+  city: "Lima",
+  region: "Lima Metropolitana",
+  countryCode: "PE",
   whatsappMessage:
     "Hola, Enfermeras 24 Horas. He visto su página web y me gustaría recibir información personalizada sobre sus servicios de enfermería a domicilio. ¿Podrían ayudarme?",
   socialLinks: {
@@ -29,15 +37,15 @@ export const navigationItems = [
 ] as const;
 
 export const quickHighlights = [
-  "Atención en casa con enfoque humano y profesional",
-  "Respuesta rápida por WhatsApp para casos programados y urgentes",
-  "Cobertura en Lima con disponibilidad 24/7",
+  "Enfermeras a domicilio en Lima con atención 24 horas para casos programados y urgentes",
+  "Respuesta rápida por WhatsApp, llamadas y orientación online antes de la visita",
+  "Cobertura en Lima Metropolitana para adultos mayores, pacientes postoperatorios y procedimientos clínicos",
 ] as const;
 
 export const trustPoints = [
-  "Cuidados postoperatorios y administración de medicamentos",
-  "Seguimiento de signos vitales y procedimientos específicos",
-  "Acompañamiento seguro para adultos mayores y pacientes complejos",
+  "Curaciones, inyectables, vía endovenosa y procedimientos de enfermería en casa",
+  "Cuidados postoperatorios, control de signos vitales y seguimiento del tratamiento indicado",
+  "Acompañamiento seguro para adultos mayores, pacientes delicados y familias que requieren respaldo profesional",
 ] as const;
 
 export type Service = {
@@ -149,49 +157,49 @@ export const benefits: Array<{
   {
     title: "Atención personalizada",
     description:
-      "Cada servicio se ajusta al estado de salud, horarios y requerimientos del paciente.",
+      "Cada visita se adapta al diagnóstico, horarios, indicaciones médicas y necesidades reales del paciente.",
     icon: "personalized",
   },
   {
     title: "Seguimiento y acompañamiento",
     description:
-      "No solo ejecutamos el procedimiento: acompañamos la evolución y resolvemos dudas clave.",
+      "No solo realizamos el procedimiento: acompañamos la evolución y orientamos a la familia durante la atención.",
     icon: "followUp",
   },
   {
     title: "Supervisión integral",
     description:
-      "Control responsable de cada intervención para brindar tranquilidad a la familia.",
+      "Control responsable de cada intervención para dar tranquilidad a pacientes, familiares y cuidadores.",
     icon: "supervision",
   },
   {
     title: "Proveedores certificados",
     description:
-      "Trabajamos con personal capacitado y enfoque profesional en atención domiciliaria.",
+      "Trabajamos con personal capacitado y experiencia en atención domiciliaria en Lima.",
     icon: "certified",
   },
   {
     title: "Planes a la medida del paciente",
     description:
-      "Diseñamos la atención según diagnóstico, frecuencia requerida y dinámica del hogar.",
+      "Organizamos la atención según diagnóstico, frecuencia requerida, distrito y dinámica del hogar.",
     icon: "tailored",
   },
   {
     title: "Diversidad de portafolio",
     description:
-      "Servicios de enfermería, acompañamiento, curaciones y procedimientos especializados.",
+      "Servicios de enfermería, acompañamiento, curaciones, sondas, inyectables y procedimientos especializados.",
     icon: "portfolio",
   },
   {
     title: "Profesionales con especialidad",
     description:
-      "Equipo con experiencia en pacientes postoperatorios, adultos mayores y tratamientos específicos.",
+      "Equipo con experiencia en pacientes postoperatorios, adultos mayores, tratamientos endovenosos y cuidados complejos.",
     icon: "specialists",
   },
   {
     title: "Educación de atención al paciente",
     description:
-      "Orientamos a la familia para reforzar cuidados y mejorar la continuidad en casa.",
+      "Orientamos a la familia para reforzar cuidados, detectar alertas y mejorar la continuidad en casa.",
     icon: "education",
   },
 ];
@@ -227,92 +235,120 @@ export const testimonials = [
 ] as const;
 
 export const galleryImages = [
-  "/medical/gallery-01.jpg",
-  "/medical/gallery-02.jpg",
-  "/medical/gallery-03.jpg",
-  "/medical/gallery-04.jpg",
-  "/medical/gallery-05.jpg",
-  "/medical/gallery-06.jpg",
+  {
+    src: "/medical/gallery-01.jpg",
+    alt: "Enfermera a domicilio brindando atención profesional en Lima",
+  },
+  {
+    src: "/medical/gallery-02.jpg",
+    alt: "Cuidados de enfermería a domicilio para paciente adulto mayor",
+  },
+  {
+    src: "/medical/gallery-03.jpg",
+    alt: "Servicio de enfermeras 24 horas con acompañamiento en casa",
+  },
+  {
+    src: "/medical/gallery-04.jpg",
+    alt: "Procedimiento de enfermería a domicilio realizado por personal profesional",
+  },
+  {
+    src: "/medical/gallery-05.jpg",
+    alt: "Seguimiento de paciente con enfermera a domicilio en Lima Metropolitana",
+  },
+  {
+    src: "/medical/gallery-06.jpg",
+    alt: "Atención domiciliaria de enfermería para recuperación y monitoreo",
+  },
 ] as const;
 
 export const metrics = [
   {
     value: "3000+",
-    label: "Clientes satisfechos",
-    supporting: "Familias atendidas con seguimiento cercano y respuesta rápida.",
+    label: "Pacientes y familias atendidas",
+    supporting: "Servicios coordinados en Lima con seguimiento cercano, respuesta rápida y atención humana.",
   },
   {
     value: "5+",
     label: "Años de experiencia",
-    supporting: "Trayectoria cuidando pacientes en casa con criterio profesional.",
+    supporting: "Trayectoria brindando enfermería a domicilio para recuperación, adultos mayores y controles clínicos.",
   },
   {
     value: "30+",
-    label: "Profesionales en enfermería",
-    supporting: "Red de personal preparado para distintos tipos de atención domiciliaria.",
+    label: "Profesionales disponibles",
+    supporting: "Red de enfermeras y técnicas preparadas para distintos tipos de atención domiciliaria.",
   },
 ] as const;
 
 export const faqItems = [
   {
-    question: "¿Realizan el servicio de enfermeras a domicilio las 24 horas?",
+    question: "¿Atienden enfermeras a domicilio las 24 horas en Lima?",
     answer:
-      "Sí. Nuestro servicio está pensado para responder tanto a necesidades programadas como a situaciones que requieren atención en horarios extendidos, todos los días de la semana.",
+      "Sí. Brindamos coordinación y atención de enfermeras a domicilio las 24 horas, todos los días de la semana, según disponibilidad y tipo de procedimiento requerido.",
+  },
+  {
+    question: "¿Puedo solicitar una enfermera por horas o por turnos?",
+    answer:
+      "Sí. Podemos coordinar enfermeras por horas, turnos prolongados o atención puntual, según el estado del paciente, el distrito y la indicación del servicio.",
+  },
+  {
+    question: "¿Qué procedimientos realizan a domicilio?",
+    answer:
+      "Realizamos curaciones, inyectables, colocación de vía endovenosa, control de signos vitales, retiro de puntos, cuidados postoperatorios, colocación de sondas y otros procedimientos de enfermería a domicilio.",
+  },
+  {
+    question: "¿Atienden adultos mayores y pacientes postoperatorios?",
+    answer:
+      "Sí. Atendemos adultos mayores, pacientes en recuperación postoperatoria y personas que requieren monitoreo, administración de medicamentos o acompañamiento profesional en casa.",
+  },
+  {
+    question: "¿En qué distritos de Lima trabajan?",
+    answer:
+      "Trabajamos en distintos distritos de Lima Metropolitana. Al escribirnos por WhatsApp validamos cobertura, tiempo estimado de llegada y disponibilidad para su zona.",
+  },
+  {
+    question: "¿Puedo recibir orientación con una enfermera online por WhatsApp?",
+    answer:
+      "Sí. Podemos orientarlo por WhatsApp para entender la necesidad, revisar el tipo de atención y ayudarle a coordinar la visita domiciliaria más adecuada.",
   },
   {
     question: "¿Cuál es el precio de una enfermera a domicilio?",
     answer:
-      "El costo depende del procedimiento, la duración del servicio, el distrito y el perfil del paciente. Lo ideal es escribirnos por WhatsApp para brindarle una cotización personalizada.",
+      "El costo depende del procedimiento, la duración del servicio, el distrito, el horario y el perfil del paciente. Por eso brindamos cotizaciones personalizadas según cada caso.",
   },
   {
-    question: "¿Cuentan con técnicas de enfermería a domicilio?",
+    question: "¿Cómo solicito una enfermera a toda hora?",
     answer:
-      "Sí. Contamos con personal capacitado para procedimientos frecuentes y cuidados especializados en el entorno domiciliario.",
-  },
-  {
-    question: "¿Son una agencia de enfermería a domicilio?",
-    answer:
-      "Brindamos coordinación y atención enfocada en enfermería domiciliaria, buscando rapidez, confianza y continuidad para cada familia.",
-  },
-  {
-    question: "¿Cuándo contratar una enfermera a domicilio por horas?",
-    answer:
-      "Es una buena opción cuando el paciente necesita apoyo durante recuperaciones, administración de medicamentos, monitoreo o acompañamiento puntual sin requerir internamiento.",
-  },
-  {
-    question: "¿Necesita una enfermera a domicilio?",
-    answer:
-      "Si su familiar requiere cuidados especializados, soporte postoperatorio, control de signos vitales o ayuda profesional en casa, podemos orientarlo y proponer el servicio adecuado.",
+      "Puede llamarnos o escribirnos por WhatsApp. Con algunos datos del paciente le indicamos el servicio recomendado, el tiempo estimado de atención y el costo aproximado.",
   },
 ] as const;
 
 export const articles = [
   {
-    category: "Cuidados en casa",
-    title: "¿Qué son los cuidados de enfermería a domicilio?",
+    category: "Enfermería a domicilio",
+    title: "¿Cuándo conviene contratar una enfermera a domicilio 24 horas?",
     excerpt:
-      "Una introducción clara a los servicios profesionales que se brindan directamente en el hogar del paciente.",
+      "Señales de alerta, tipos de pacientes y situaciones en las que una atención continua en casa puede marcar la diferencia.",
     image: "/medical/article-01.jpg",
   },
   {
-    category: "Curación de heridas",
-    title: "Somos líderes en prevención y curación de heridas",
+    category: "Cuidados postoperatorios",
+    title: "Cuidados postoperatorios a domicilio en Lima: qué debe vigilar la familia",
     excerpt:
-      "Buenas prácticas, control de evolución y atención técnica para proteger la recuperación del paciente.",
+      "Recomendaciones básicas sobre dolor, heridas, medicación y seguimiento profesional después de una cirugía.",
     image: "/medical/article-02.jpg",
   },
   {
-    category: "Tratamientos complementarios",
-    title: "Conozca sobre la vitamina C y el cocktail de vida Pascoe",
+    category: "Orientación online",
+    title: "Enfermeras online por WhatsApp: qué se puede resolver antes de la visita",
     excerpt:
-      "Información breve sobre alternativas terapéuticas y acompañamiento profesional en domicilio.",
+      "Cómo una orientación rápida ayuda a coordinar mejor la atención, preparar materiales y definir el tipo de servicio requerido.",
     image: "/medical/article-03.jpg",
   },
 ] as const;
 
 export const footerServices = [
-  "Enfermeras a domicilio",
-  "Inyectables a domicilio",
-  "Vía endovenosa",
-  "Cuidados postoperatorios",
+  "Enfermeras a domicilio 24 horas",
+  "Enfermeras por horas en Lima",
+  "Inyectables y vía endovenosa",
+  "Cuidados postoperatorios en casa",
 ] as const;

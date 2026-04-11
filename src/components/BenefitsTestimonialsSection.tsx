@@ -36,8 +36,8 @@ export function BenefitsTestimonialsSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Por qué elegirnos"
-            title="Una propuesta de valor clara para transmitir seguridad desde la primera impresión."
-            description="Esta sección refuerza confianza, profesionalismo y cercanía con beneficios concretos. No son solo promesas: son razones visibles para que el usuario tome acción."
+            title="Razones para elegir un servicio de enfermeras a domicilio con respaldo profesional."
+            description="Cada beneficio responde a lo que más busca una familia al contratar enfermería a domicilio: seguridad, rapidez, trato humano, seguimiento y experiencia real en pacientes de distintas complejidades."
             centered
           />
 
@@ -72,8 +72,8 @@ export function BenefitsTestimonialsSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Prueba social"
-            title="Testimonios que refuerzan confianza y ayudan a convertir visitas en consultas."
-            description="Tomamos la lógica de reseñas del sitio de referencia, pero en un formato más limpio, legible y útil para sostener la decisión del cliente."
+            title="Testimonios de familias que ya solicitaron enfermeras a domicilio en Lima."
+            description="Las reseñas ayudan a validar puntualidad, trato humano y calidad de la atención. Son una señal importante para quienes buscan enfermeras 24 horas con referencias confiables."
             centered
           />
 
@@ -123,26 +123,28 @@ export function BenefitsTestimonialsSection() {
                   Servicios realizados
                 </p>
                 <h2 className="font-display mt-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-                  Experiencia visible en enfermería a domicilio en Lima.
+                  Experiencia real en enfermería a domicilio en Lima Metropolitana.
                 </h2>
                 <p className="mt-6 max-w-xl text-base leading-8 text-sky-50/88">
-                  Mostramos una composición visual más institucional para dar respaldo
-                  comercial al servicio: atención real, cercanía con el paciente y una imagen
-                  más sólida de la empresa.
+                  Nuestro trabajo incluye acompañamiento a pacientes, controles, procedimientos y
+                  cuidados continuos en casa. Esta experiencia permite responder mejor ante
+                  necesidades programadas y atención de enfermeras a toda hora.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                 {galleryImages.map((image, index) => (
                   <div
-                    key={image}
+                    key={image.src}
                     className={`overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/10 shadow-lg ${
                       index % 3 === 1 ? "md:translate-y-6" : ""
                     }`}
                   >
                     <img
-                      src={image}
-                      alt={`Servicio realizado ${index + 1}`}
+                      src={image.src}
+                      alt={image.alt}
+                      loading="lazy"
+                      decoding="async"
                       className="h-48 w-full object-cover object-center"
                     />
                   </div>
@@ -157,8 +159,8 @@ export function BenefitsTestimonialsSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Resultados"
-            title="Cifras destacadas para reforzar autoridad y experiencia."
-            description="Los números grandes cumplen una función comercial importante: validan la trayectoria, transmiten respaldo y ayudan a que la marca se perciba más consolidada."
+            title="Cifras que respaldan la experiencia del servicio de enfermería a domicilio."
+            description="Estos datos ayudan a transmitir continuidad, volumen de atención y capacidad operativa para responder a familias que buscan enfermeras por horas, turnos o atención 24 horas."
             centered
           />
 
@@ -185,7 +187,7 @@ export function BenefitsTestimonialsSection() {
                 Continuidad comercial
               </p>
               <h2 className="font-display mt-4 text-3xl font-extrabold text-[var(--ink)]">
-                Empresa de cuidados de enfermería a domicilio con varios puntos de contacto.
+                Servicio de enfermeras 24 horas con contacto inmediato por llamada y WhatsApp.
               </h2>
             </div>
             <a href={buildWhatsAppUrl()} className={`${primaryButtonClass} mt-6 lg:mt-0`}>

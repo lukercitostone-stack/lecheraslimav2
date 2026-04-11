@@ -81,8 +81,8 @@ export function FaqContactSection() {
             <div>
               <SectionHeading
                 eyebrow="Preguntas frecuentes"
-                title="Respuestas claras para resolver objeciones sin sacar al usuario de la página."
-                description="La sección FAQ mantiene el enfoque comercial: explica disponibilidad, tipo de servicio y criterios para contratar una enfermera a domicilio de forma rápida y ordenada."
+                title="Respuestas claras sobre enfermeras a domicilio, horarios, cobertura y costos."
+                description="Aquí resolvemos las dudas más comunes de quienes buscan enfermeras a domicilio en Lima, enfermeras 24 horas, apoyo por turnos y orientación online antes de coordinar la visita."
               />
 
               <div className="mt-10 space-y-4">
@@ -124,7 +124,9 @@ export function FaqContactSection() {
             <div className="rounded-[2rem] border border-white bg-white p-4 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
               <img
                 src="/medical/hero.jpg"
-                alt="Atención de enfermería a domicilio"
+                alt="Atención profesional de enfermería a domicilio en Lima"
+                loading="lazy"
+                decoding="async"
                 className="h-[520px] w-full rounded-[1.5rem] object-cover"
               />
             </div>
@@ -139,7 +141,7 @@ export function FaqContactSection() {
               <SectionHeading
                 eyebrow="Contacto"
                 title="Envíanos tu consulta sin compromiso."
-                description="El formulario se adaptó para captación directa. Al enviarlo, la información se prepara en WhatsApp con los datos del paciente para acelerar la atención."
+                description="Cuéntenos qué necesita el paciente y preparamos su consulta en WhatsApp para acelerar la coordinación de la enfermera a domicilio, el horario y la cobertura en Lima."
               />
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">

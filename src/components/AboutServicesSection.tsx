@@ -19,7 +19,9 @@ export function AboutServicesSection() {
             <div className="absolute inset-x-10 bottom-[-1.25rem] h-10 rounded-full bg-[rgba(18,58,150,0.10)] blur-xl" />
             <img
               src="/medical/about.jpg"
-              alt="Equipo de enfermería a domicilio"
+              alt="Equipo de enfermeras a domicilio atendiendo pacientes en Lima"
+              loading="lazy"
+              decoding="async"
               className="relative h-full min-h-[420px] w-full rounded-[2rem] object-cover shadow-[0_22px_60px_rgba(15,23,42,0.12)]"
             />
           </div>
@@ -27,8 +29,8 @@ export function AboutServicesSection() {
           <div>
             <SectionHeading
               eyebrow="Presentación"
-              title="Confianza, experiencia y una atención pensada para cuidar mejor en casa."
-              description="En Enfermeras 24 Horas ponemos a su alcance un equipo con amplia experiencia para brindar atención personalizada en la comodidad del hogar. Ofrecemos acompañamiento profesional, control clínico y una comunicación clara para que cada familia se sienta respaldada."
+              title="Enfermeras a domicilio con experiencia, cercanía y criterios claros de atención en casa."
+              description="En Enfermeras 24 Horas brindamos apoyo profesional para pacientes que necesitan cuidados de enfermería a domicilio en Lima. Nuestro enfoque combina rapidez de respuesta, trato humano y procedimientos realizados con orden y seguridad."
             />
 
             <div className="mt-8 grid gap-4">
@@ -55,8 +57,8 @@ export function AboutServicesSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Servicios destacados"
-            title="Servicios de enfermería a domicilio organizados para vender mejor y convertir más."
-            description="Rediseñamos la oferta para que cada servicio se identifique rápido, se vea confiable y tenga un punto directo de contacto. El visitante entiende qué hacen y cómo pedir ayuda en pocos segundos."
+            title="Servicios de enfermería a domicilio para adultos mayores, recuperación y procedimientos clínicos."
+            description="Atendemos necesidades frecuentes y especializadas en casa: curaciones, inyectables, control de signos vitales, sondas, retiro de puntos y cuidados postoperatorios con disponibilidad en Lima Metropolitana."
             centered
           />
 
@@ -69,7 +71,9 @@ export function AboutServicesSection() {
                 <div className="relative overflow-hidden">
                   <img
                     src={service.image}
-                    alt={service.title}
+                    alt={`${service.title} a domicilio en Lima`}
+                    loading="lazy"
+                    decoding="async"
                     className={`h-56 w-full transition duration-500 group-hover:scale-105 ${
                       service.imageContain
                         ? "bg-slate-50 p-6 object-contain"
@@ -112,11 +116,12 @@ export function AboutServicesSection() {
                 Atención rápida
               </p>
               <h2 className="font-display mt-4 text-3xl font-extrabold sm:text-4xl">
-                ¿Necesita coordinar una enfermera hoy mismo?
+                ¿Necesita coordinar una enfermera hoy mismo o durante la noche?
               </h2>
               <p className="mt-4 text-base leading-8 text-sky-50/90">
-                Escríbanos y le ayudamos a identificar el servicio más adecuado, el tiempo
-                estimado y la modalidad de atención que mejor se ajuste a su familiar.
+                Escríbanos y le ayudamos a identificar el servicio de enfermería a domicilio más
+                adecuado, el tiempo estimado de llegada y la modalidad de atención que mejor se
+                ajuste a su familiar.
               </p>
             </div>
 
