@@ -4,6 +4,9 @@ import { siteConfig } from "../data/siteContent";
 import { SectionHeading, SocialPill } from "./ui";
 
 export function ArticlesFooterSection({ page }: { page: PageContent }) {
+  const shareUrl = `${siteConfig.siteUrl}${page.canonicalPath ?? page.path}`;
+  const encodedShareUrl = encodeURIComponent(shareUrl);
+
   return (
     <>
       <section
@@ -88,6 +91,24 @@ export function ArticlesFooterSection({ page }: { page: PageContent }) {
                 icon={Linkedin}
               />
             </div>
+
+            <nav aria-label="Compartir esta página" className="sr-only">
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`}
+              >
+                Compartir en Facebook
+              </a>
+              <a
+                href={`https://wa.me/?text=${encodeURIComponent(`Mira esta página: ${shareUrl}`)}`}
+              >
+                Compartir por WhatsApp
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`}
+              >
+                Compartir en LinkedIn
+              </a>
+            </nav>
           </div>
 
           <div>

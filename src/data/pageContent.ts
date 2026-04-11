@@ -120,9 +120,9 @@ export const pageContents: PageContent[] = [
   {
     path: "/",
     metaTitle:
-      "Enfermeras a domicilio en Lima 24 horas | Atención rápida por WhatsApp",
+      "Enfermeras a domicilio en Lima | Atención 24 horas por WhatsApp",
     metaDescription:
-      "Servicio de enfermeras a domicilio en Lima las 24 horas: curaciones, inyectables, cuidados postoperatorios, control de signos vitales y orientación online por WhatsApp.",
+      "Servicio de enfermeras a domicilio en Lima 24 horas para curaciones, inyectables, cuidados postoperatorios, signos vitales y orientación por WhatsApp.",
     topic: "Enfermeras a domicilio en Lima",
     seoKeywords: [
       "enfermeras a domicilio",

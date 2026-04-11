@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { App } from "./App";
 import { getPageContent } from "./data/pageContent";
 import "./index.css";
@@ -10,8 +10,14 @@ if (!rootElement) {
   throw new Error("No se encontró el elemento root para montar la aplicación.");
 }
 
-ReactDOM.createRoot(rootElement).render(
+const app = (
   <React.StrictMode>
     <App page={getPageContent(window.location.pathname)} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}

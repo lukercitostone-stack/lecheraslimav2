@@ -159,7 +159,6 @@ export function HeroSection({ page }: { page: PageContent }) {
                 src="/medical/hero.jpg"
                 alt={page.heroImageAlt}
                 loading="eager"
-                fetchPriority="high"
                 decoding="async"
                 className="h-[500px] w-full rounded-[1.5rem] object-cover object-center"
               />

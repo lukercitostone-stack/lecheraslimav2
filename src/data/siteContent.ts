@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Enfermeras 24 Horas",
   legalName: "Enfermeras 24 Horas en Lima",
+  siteUrl: "https://enfermeras24horas.com",
   alternateNames: [
     "Enfermeras a Toda Hora",
     "Enfermeras a domicilio en Lima",
