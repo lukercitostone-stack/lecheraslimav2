@@ -4,12 +4,6 @@ export default function Document() {
   return (
     <Html lang="es-PE">
       <Head>
-        <meta name="google-adsense-account" content="ca-pub-5901008774940343" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5901008774940343"
-          crossOrigin="anonymous"
-        />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
