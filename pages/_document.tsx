@@ -4,6 +4,11 @@ export default function Document() {
   return (
     <Html lang="es-PE">
       <Head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7528347843449282"
+          crossOrigin="anonymous"
+        />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
